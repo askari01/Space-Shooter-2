@@ -8,10 +8,25 @@ public class PlayerController : MonoBehaviour {
 	public float tilt;
 	public float resistance;
 
+	public GameObject shot;
+	public Transform shotSpawn;
+
+	public float fireRate;
+	private float nextFire = 0.5f;
+
 	public Boundry bound;
 
 	void Start (){
 		rigid = GetComponent<Rigidbody> ();
+	}
+
+	void Update (){
+		if (Input.GetButton("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			GameObject clone = 
+			Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
+			Destroy(clone, 1f);
+		}
 	}
 
 	void FixedUpdate (){
@@ -21,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 
 		//
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		Debug.Log (movement);
 		rigid.velocity = movement * speed;
 
 		rigid.position = new Vector3 (
