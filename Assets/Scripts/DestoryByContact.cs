@@ -11,14 +11,16 @@ public class DestoryByContact : MonoBehaviour {
 	public GameObject gameControllerObject;
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log (other);
+		if (other.tag == "asteroid") {
+			return;
+		}
 		//GameObject asteroid =
 		Instantiate (explosion, transform.position, transform.rotation); //as GameObject;
 		GameObject player =
 		Instantiate (playerExplosion, other.transform.position, other.transform.rotation) as GameObject;
 		Destroy (other.gameObject);
 		Destroy (gameObject);
-		//Destroy (player, 1f);
+		Destroy (player, 1f);
 		gameController.addScore (scoreValue);
 	}
 

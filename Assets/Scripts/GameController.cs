@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
 	public GameObject hazard;
 	public Vector3 spawnValues;
@@ -24,10 +25,8 @@ public class GameController : MonoBehaviour {
 	{
 		//Debug.Log ("hello");
 		yield return new WaitForSeconds (startWait);
-		while (true)
-		{
-			for (int i = 0; i < hazardCount; i++)
-			{
+		while (true) {
+			for (int i = 0; i < hazardCount; i++) {
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (hazard, spawnPosition, spawnRotation);
@@ -37,12 +36,14 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void addScore( int newScore) {
+	public void addScore (int newScore)
+	{
 		score += newScore;
 		UpdateScore ();
 	}
 	// Update is called once per frame
-	void UpdateScore () {
+	void UpdateScore ()
+	{
 		Debug.Log (Score);
 		Score.text = "Score: " + score;
 	}
