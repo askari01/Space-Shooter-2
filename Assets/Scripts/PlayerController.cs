@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	private Rigidbody rigid;
+	private AudioSource audioSource ;
+
 	public float speed;
 	public float tilt;
 	public float resistance;
@@ -18,13 +20,16 @@ public class PlayerController : MonoBehaviour {
 
 	void Start (){
 		rigid = GetComponent<Rigidbody> ();
+		audioSource = GetComponent<AudioSource >();
 	}
 
 	void Update (){
 		if (Input.GetButton("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
+
 			GameObject clone = 
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
+			audioSource.Play ();
 			Destroy(clone, 1f);
 		}
 	}
@@ -36,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 
 		//
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		Debug.Log (movement);
 		rigid.velocity = movement * speed;
 
 		rigid.position = new Vector3 (
