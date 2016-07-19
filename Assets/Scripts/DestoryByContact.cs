@@ -7,7 +7,8 @@ public class DestoryByContact : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
-	private GameController gameController;
+	public GameController gameController;
+	public GameObject gameControllerObject;
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log (other);
@@ -17,17 +18,18 @@ public class DestoryByContact : MonoBehaviour {
 		Instantiate (playerExplosion, other.transform.position, other.transform.rotation) as GameObject;
 		Destroy (other.gameObject);
 		Destroy (gameObject);
-		Destroy (player, 1f);
+		//Destroy (player, 1f);
 		gameController.addScore (scoreValue);
 	}
 
 	// Use this for initialization
 	void Start () {
+		
 		//Debug.Log ("Hello");
 		//Rigidbody rigid = GetComponent<Rigidbody> ();
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
 		if (gameControllerObject != null) {
-			gameController = gameControllerObject.AddComponent<GameController> ();
+			gameController = gameControllerObject.GetComponent<GameController> ();
 		} else {
 			Debug.Log ("can not find game controller");
 		}

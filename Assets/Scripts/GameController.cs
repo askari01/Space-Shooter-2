@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void UpdateScore () {
-			Score.text = "Score" + score;
+		Debug.Log (Score);
+		Score.text = "Score: " + score;
 	}
 }
