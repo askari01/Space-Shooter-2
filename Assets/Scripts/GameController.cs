@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 	// Update is called once per frame
 	void UpdateScore ()
 	{
-		Debug.Log (Score);
+		//Debug.Log (Score);
 		Score.text = "Score: " + score;
 	}
 }
