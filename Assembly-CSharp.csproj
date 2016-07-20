@@ -60,7 +60,6 @@
      <Compile Include="Assets\Scripts\DestoryByBoundry.cs" />
      <Compile Include="Assets\Scripts\DestoryByContact.cs" />
      <Compile Include="Assets\Scripts\DestoryEverything.cs" />
-     <Compile Include="Assets\Scripts\EnemyShoting.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\MovingEnemyShip.cs" />

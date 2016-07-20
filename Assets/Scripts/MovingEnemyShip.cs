@@ -24,7 +24,7 @@ public class MovingEnemyShip : MonoBehaviour {
 	void Update () {
 		if (Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-			Debug.Log (nextFire);
+			//Debug.Log (nextFire);
 	
 			GameObject clone = 
 				Instantiate (shot, shotCreation.position, shotCreation.rotation) as GameObject;

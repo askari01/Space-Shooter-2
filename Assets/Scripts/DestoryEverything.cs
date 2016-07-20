@@ -9,8 +9,10 @@ public class DestoryEverything : MonoBehaviour {
 //		Destroy (other.gameObject);
 //	}
 
-	void onTriggerEnter (Collider other){
+	void OnTriggerEnter (Collider other){
 		//Destroy (other.gameObject);
+		Debug.Log (other.name);
+		Debug.Log (other.gameObject.name);
 		Destroy (other.gameObject);
 	}
 
