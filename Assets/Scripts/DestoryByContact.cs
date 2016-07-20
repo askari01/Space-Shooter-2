@@ -11,7 +11,7 @@ public class DestoryByContact : MonoBehaviour {
 	public GameObject gameControllerObject;
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "asteroid") {
+		if (other.tag == "asteroid" || other.tag == "enemyShip" || other.tag == "laser") {
 			return;
 		}
 		//GameObject asteroid =
@@ -21,6 +21,7 @@ public class DestoryByContact : MonoBehaviour {
 		Destroy (other.gameObject);
 		Destroy (gameObject);
 		Destroy (player, 1f);
+		Destroy (other);
 		gameController.addScore (scoreValue);
 	}
 

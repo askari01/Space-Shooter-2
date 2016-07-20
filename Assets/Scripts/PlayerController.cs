@@ -24,13 +24,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update (){
-		if (Input.GetButton("Fire1") || Input.GetKeyDown("space") && Time.time > nextFire) {
+		if (Input.GetButtonDown("Fire1") || Input.GetKeyDown("space") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-
+			//Debug.Log (nextFire);
 			GameObject clone = 
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
 			audioSource.Play ();
-			Destroy(clone, 1f);
+			//Destroy (shotSpawn);
+			Destroy (clone, 1f);
 		}
 	}
 
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 			Mathf.Clamp(rigid.position.z, bound.zMin, bound.zMax)
 		);
 
-		// there is no friction on space - yawar bhai
+		// there is no friction in space - yawar bhai
 		rigid.rotation = Quaternion.Euler (new Vector3 (0.0f , 0.0f, rigid.velocity.x * -tilt));
 	}
 }
@@ -61,4 +62,3 @@ public class Boundry {
 	public float zMin;
 	public float zMax;
 }
- 
