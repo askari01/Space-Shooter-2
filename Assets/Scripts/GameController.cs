@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -15,9 +16,14 @@ public class GameController : MonoBehaviour
 
 	public GUIText Score;
 	private int score;
+
+	public GameObject canvas;
+	private bool restart;
+
 	// Use this for initialization
 	void Start ()
 	{
+		restart = false;
 		score = 0;
 		UpdateScore ();
 		StartCoroutine (SpawnWaves ());
@@ -37,6 +43,18 @@ public class GameController : MonoBehaviour
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return new WaitForSeconds (waveWait);
+
+			if (restart){
+				if (Input.GetKeyDown(KeyCode.R)) {
+					restart = false;
+					canvas.SetActive (false);
+					int scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene ().buildIndex;
+					UnityEngine.SceneManagement.SceneManager.LoadScene (scene, LoadSceneMode.Single);
+
+				} else {
+					break;
+				}
+			}
 		}
 	}
 
@@ -50,5 +68,10 @@ public class GameController : MonoBehaviour
 	{
 		//Debug.Log (Score);
 		Score.text = "Score: " + score;
+	}
+ 
+	public void GameOver (){
+		canvas.SetActive (true);
+		restart = true;
 	}
 }

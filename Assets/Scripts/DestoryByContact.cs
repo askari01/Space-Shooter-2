@@ -20,9 +20,16 @@ public class DestoryByContact : MonoBehaviour {
 		Instantiate (playerExplosion, other.transform.position, other.transform.rotation) as GameObject;
 		Destroy (other.gameObject);
 		Destroy (gameObject);
-		Destroy (player, 1f);
+		//Destroy (player, 1f);
 		Destroy (other);
+		//Debug.Log (gameObject.name);
+
 		gameController.addScore (scoreValue);
+
+		if (other.name == "Player"){
+			gameController.GameOver ();
+			Destroy (player, 1f);
+		}
 	}
 
 	// Use this for initialization

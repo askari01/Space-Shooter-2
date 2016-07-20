@@ -11,8 +11,6 @@ public class DestoryEverything : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		//Destroy (other.gameObject);
-		Debug.Log (other.name);
-		Debug.Log (other.gameObject.name);
 		Destroy (other.gameObject);
 	}
 
